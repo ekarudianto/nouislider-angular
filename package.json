@@ -19,9 +19,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "uglifyjs nouislider.js -o nouislider.min.js -c -m",
-    "babel": "babel source --presets babel-preset-es2015 --out-dir distribution",
-    "babel-uglify": "uglifyjs distribution/nouislider-es6-support.js -o distribution/nouislider-es6-support.min.js -c -m"
+    "build": "uglifyjs distribution/nouislider-es6-support.js -o nouislider-es6-support.min.js -c -m",
+    "babel": "babel source --presets babel-preset-es2015 --out-dir distribution"
   },
   "repository": {
     "type": "git",
