@@ -21,14 +21,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Yankovsky/nouislider-angular.git"
+    "url": "git+https://github.com/ekarudianto/nouislider-angular-es6"
   },
   "author": "Eka Rudianto <ekarudianto89@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Yankovsky/nouislider-angular/issues"
-  },
-  "homepage": "https://github.com/Yankovsky/nouislider-angular#readme",
+  "homepage": "https://github.com/ekarudianto/nouislider-angular-es6#readme",
   "dependencies": {
     "nouislider": "^9.0.0"
   }
