@@ -1,6 +1,9 @@
+# This is an forked repository from
+[Yankovsky nouislider angular directive](https://github.com/Yankovsky/nouislider-angular)
+
 # nouislider-angular
 
-Check demo at http://yankovsky.github.io/nouislider-angular/examples
+You could check the demo at Yankovsky website -> http://yankovsky.github.io/nouislider-angular/examples
 
 You can pass any [nouislider options](http://refreshless.com/nouislider/slider-options/) options to ya-no-ui-slider directive.
 
@@ -9,18 +12,14 @@ You can pass any [nouislider options](http://refreshless.com/nouislider/slider-o
 #### Install with NPM
 
 ```
-npm install nouislider-angular
-```
-
-#### Install with Bower
-
-```
-bower install nouislider-angular
+npm install nouislider-angular-es6
 ```
 
 ## Basic usage
 
 ```javascript
+import from 'nouislider-angular-es6';
+
 angular.module('sampleApp', ['ya.nouislider'])
   .controller('SampleCtrl', function($scope) {
     $scope.options = {
@@ -79,10 +78,6 @@ Use number to specify delay in ms or use special value "Infinity" to disable upd
 <div ya-no-ui-slider='options' 
      ya-no-ui-slider-slide-debounce='Infinity'></div>
 ```
-
-## Development
-
-For development use examples/index.html file and some local web server.
 
 ## Building minified version
 

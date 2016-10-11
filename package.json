@@ -1,11 +1,8 @@
 {
-  "name": "nouislider-angular",
-  "version": "2.6.2",
-  "description": "Angular wrapper for nouislider",
+  "name": "nouislider-angular-es6",
+  "version": "1.0.0",
+  "description": "Angular wrapper for nouislider using es6 import support",
   "main": "distribution/nouislider-es6-support.min.js",
-  "directories": {
-    "example": "example"
-  },
   "keywords": [
     "angular",
     "angularjs",
@@ -26,8 +23,8 @@
     "type": "git",
     "url": "git+https://github.com/Yankovsky/nouislider-angular.git"
   },
-  "author": "Yankovsky <YankovskyAndrey@gmail.com>",
-  "license": "ISC",
+  "author": "Eka Rudianto <ekarudianto89@gmail.com>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Yankovsky/nouislider-angular/issues"
   },
