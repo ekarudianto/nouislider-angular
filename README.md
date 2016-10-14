@@ -1,5 +1,7 @@
-# This is an forked repository from
+# This is a forked repository from
 [Yankovsky nouislider angular directive](https://github.com/Yankovsky/nouislider-angular)
+
+This is nouislider angular directive converted into module based so that it could have a es6 'import' syntax support.
 
 # nouislider-angular
 

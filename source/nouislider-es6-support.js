@@ -1,9 +1,23 @@
 import noUiSlider from 'nouislider';
 
 const directive = angular.module('ya.nouislider', []);
+let $noUiSliderInstance = undefined;
 
 directive.value('yaNoUiSliderConfig', {});
-directive.directive('yaNoUiSlider', ['$timeout', '$log', 'yaNoUiSliderConfig', function($timeout, $log, yaNoUiSliderConfig) {
+directive.service('$noUiSlider', function () {
+
+    /**
+     * Returns a noUiSlider instance as a service.
+     *
+     * return @object
+     * */
+
+    this.prototype.getInstance = function () {
+        return $noUiSliderInstance;
+    };
+
+})();
+directive.directive('yaNoUiSlider', ['$timeout', '$log', 'yaNoUiSliderConfig', function ($timeout, $log, yaNoUiSliderConfig) {
     function toArray(val) {
         return angular.isArray(val) ? val : [val];
     }
@@ -44,7 +58,7 @@ directive.directive('yaNoUiSlider', ['$timeout', '$log', 'yaNoUiSliderConfig', f
             yaNoUiSliderHandle2Disabled: '=',
             yaNoUiSliderSlideDebounce: '@'
         },
-        controller: ['$scope', '$element', '$attrs', function($scope, $element, $attrs) {
+        controller: ['$scope', '$element', '$attrs', function ($scope, $element, $attrs) {
             var that = this,
                 noUiSliderElement = $element[0],
                 noUiSliderEvents = $scope.$parent.$eval($attrs.yaNoUiSliderEvents),
@@ -56,7 +70,7 @@ directive.directive('yaNoUiSlider', ['$timeout', '$log', 'yaNoUiSliderConfig', f
                 pendingSlideDebounce;
 
             // allow to get noUiSlider instance from outside of that directive
-            that.getNoUiSlider = function() {
+            that.getNoUiSlider = function () {
                 return noUiSliderInstance;
             };
 
@@ -80,7 +94,7 @@ directive.directive('yaNoUiSlider', ['$timeout', '$log', 'yaNoUiSliderConfig', f
                     var newValueCopy = copy(newValue);
                     if (!equals(newValueCopy, latestValue)) {
                         latestValue = newValueCopy;
-                        $scope.$applyAsync(function() {
+                        $scope.$applyAsync(function () {
                             if (angular.isArray(newValue)) {
                                 if (angular.isArray($scope.yaNoUiSlider.start)) {
                                     $scope.yaNoUiSlider.start[0] = newValue[0];
@@ -104,8 +118,9 @@ directive.directive('yaNoUiSlider', ['$timeout', '$log', 'yaNoUiSliderConfig', f
 
                 origins = noUiSliderElement.getElementsByClassName('noUi-origin');
                 noUiSliderInstance = noUiSliderElement.noUiSlider;
+                $noUiSliderInstance = noUiSliderInstance;
 
-                sliderScope.$watch(function() {
+                sliderScope.$watch(function () {
                     var modelValue = $scope.yaNoUiSlider.start;
                     if (!equals(modelValue, latestValue)) {
                         latestValue = copy(modelValue);
@@ -114,11 +129,11 @@ directive.directive('yaNoUiSlider', ['$timeout', '$log', 'yaNoUiSliderConfig', f
                     return latestValue;
                 });
 
-                angular.forEach(events, function(eventName) {
-                    noUiSliderInstance.on(eventName + '.internal', function(values, handle, unencoded) {
+                angular.forEach(events, function (eventName) {
+                    noUiSliderInstance.on(eventName + '.internal', function (values, handle, unencoded) {
                         if (eventName === 'slide' && slideDebounceDelay) {
                             $timeout.cancel(pendingSlideDebounce);
-                            pendingSlideDebounce = $timeout(function() {
+                            pendingSlideDebounce = $timeout(function () {
                                 updateValue(unencoded);
                             }, slideDebounceDelay);
                         } else {
@@ -139,7 +154,7 @@ directive.directive('yaNoUiSlider', ['$timeout', '$log', 'yaNoUiSliderConfig', f
 
                 sliderScope.$watch('yaNoUiSliderDisabled', toggleDisabled.bind(undefined, noUiSliderElement));
                 sliderScope.$watch('yaNoUiSliderHandle1Disabled', toggleDisabled.bind(undefined, origins[0]));
-                sliderScope.$watch('yaNoUiSliderHandle2Disabled', function(newValue, oldValue) {
+                sliderScope.$watch('yaNoUiSliderHandle2Disabled', function (newValue, oldValue) {
                     if (newValue) {
                         if (!origins[1]) {
                             return $log.warn('Warning: attempt to toggle disabled state of second handle using ya-no-ui-slider-handle2-disabled attribute in one-handle slider, nouislider-angular is ignoring such call.');
@@ -150,9 +165,9 @@ directive.directive('yaNoUiSlider', ['$timeout', '$log', 'yaNoUiSliderConfig', f
             }
 
             function initialize() {
-                $scope.$watch(function() {
+                $scope.$watch(function () {
                     return omit($scope.yaNoUiSlider, 'start');
-                }, function() {
+                }, function () {
                     if (noUiSliderInstance) {
                         destroy();
                     }
@@ -162,7 +177,7 @@ directive.directive('yaNoUiSlider', ['$timeout', '$log', 'yaNoUiSliderConfig', f
                 $scope.$on('$destroy', destroy);
             }
 
-            var initializeWatcher = $scope.$watch('yaNoUiSlider', function(options) {
+            var initializeWatcher = $scope.$watch('yaNoUiSlider', function (options) {
                 if (options) {
                     initializeWatcher();
                     initialize();
