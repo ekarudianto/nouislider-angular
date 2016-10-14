@@ -12,12 +12,13 @@
   "devDependencies": {
     "babel-cli": "^6.16.0",
     "babel-preset-es2015": "^6.16.0",
-    "uglify-js": "^2.4.24"
+    "uglify-js": "^2.4.24",
+    "nouislider": "^9.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "uglifyjs distribution/nouislider-es6-support.js -o nouislider-es6-support.min.js -c -m",
-    "babel": "babel source --presets babel-preset-es2015 --out-dir distribution"
+    "babel": "babel source --presets babel-preset-es2015 --out-dir distribution",
+    "build": "uglifyjs distribution/nouislider-es6-support.js -o nouislider-es6-support.min.js -c -m"
   },
   "repository": {
     "type": "git",
@@ -25,8 +26,5 @@
   },
   "author": "Eka Rudianto <ekarudianto89@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/ekarudianto/nouislider-angular-es6#readme",
-  "dependencies": {
-    "nouislider": "^9.0.0"
-  }
+  "homepage": "https://github.com/ekarudianto/nouislider-angular-es6#readme"
 }
