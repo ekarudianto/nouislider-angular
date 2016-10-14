@@ -1,6 +1,6 @@
 {
   "name": "nouislider-angular-es6",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Angular wrapper for nouislider using es6 import support",
   "main": "nouislider-es6-support.min.js",
   "keywords": [
@@ -9,11 +9,13 @@
     "slider",
     "nouislider"
   ],
+  "dependencies": {
+    "nouislider": "^9.0.0"
+  },
   "devDependencies": {
     "babel-cli": "^6.16.0",
     "babel-preset-es2015": "^6.16.0",
-    "uglify-js": "^2.4.24",
-    "nouislider": "^9.0.0"
+    "uglify-js": "^2.4.24"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
