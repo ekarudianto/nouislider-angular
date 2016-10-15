@@ -28,7 +28,7 @@ angular.module('sampleApp', ['ya.nouislider'])
         start: [20, 70],
         range: {min: 0, max: 100}
     }
-})
+});
 ```
 ```html
 <div ya-no-ui-slider='options'></div>
@@ -79,6 +79,27 @@ Use number to specify delay in ms or use special value "Infinity" to disable upd
      
 <div ya-no-ui-slider='options' 
      ya-no-ui-slider-slide-debounce='Infinity'></div>
+```
+
+### Setting range value example
+
+Use number to specify the range to be reflected on the nouislider view
+
+```html
+<div ya-no-ui-slider='options'></div>
+<button ng-click="ctrl.options.start = [40, 60]">set [40, 60]</button>
+```
+
+```javascript
+import from 'nouislider-angular-es6';
+
+angular.module('sampleApp', ['ya.nouislider'])
+  .controller('SampleCtrl', function($scope) {
+    $scope.options = {
+        start: [20, 70],
+        range: {min: 0, max: 100}
+    }
+});
 ```
 
 ## Building minified version

@@ -1,6 +1,6 @@
 {
   "name": "nouislider-angular-es6",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Angular wrapper for nouislider using es6 import support",
   "main": "nouislider-es6-support.min.js",
   "keywords": [

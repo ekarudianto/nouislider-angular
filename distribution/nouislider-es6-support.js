@@ -7,21 +7,8 @@ var _nouislider2 = _interopRequireDefault(_nouislider);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var directive = angular.module('ya.nouislider', []);
-var $noUiSliderInstance = undefined;
 
 directive.value('yaNoUiSliderConfig', {});
-directive.service('$noUiSlider', function () {
-
-    /**
-     * Returns a noUiSlider instance as a service.
-     *
-     * return @object
-     * */
-
-    this.prototype.getInstance = function () {
-        return $noUiSliderInstance;
-    };
-})();
 directive.directive('yaNoUiSlider', ['$timeout', '$log', 'yaNoUiSliderConfig', function ($timeout, $log, yaNoUiSliderConfig) {
     function toArray(val) {
         return angular.isArray(val) ? val : [val];
@@ -123,7 +110,6 @@ directive.directive('yaNoUiSlider', ['$timeout', '$log', 'yaNoUiSliderConfig', f
 
                 origins = noUiSliderElement.getElementsByClassName('noUi-origin');
                 noUiSliderInstance = noUiSliderElement.noUiSlider;
-                $noUiSliderInstance = noUiSliderInstance;
 
                 sliderScope.$watch(function () {
                     var modelValue = $scope.yaNoUiSlider.start;
